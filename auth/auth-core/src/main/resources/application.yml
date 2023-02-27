@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: auth
+
+  datasource:
+    url: ${RENTAL_DB_URL:jdbc:postgresql://0.0.0.0:5435/rental}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 30
+      max-lifetime: 2000000
+      driver-class-name: ${RENTAL_DB_DRIVER:org.postgresql.Driver}
+      username: ${RENTAL_DB_USERNAME:rental_user}
+      password: ${RENTAL_DB_PASSWORD:12345678}
+  main:
+    allow-bean-definition-overriding: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      cache.use_minimal_puts: true
+      cache.use_query_cache: false
+      use_second_level_cache: false
+      hibernate.show_sql: false
+      hibernate.use_sql: true
+      hibernate.id.new_generator_mappings: false
+      use_reflection_optimizer: false
+      auto-register_listeners: false
+      hibernate.enable_lazy_load_no_trans: true
+    show-sql: true
+    open-in-view: true
+    generate-ddl: false
+    database: postgresql
+
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.xml
+    enabled: true
+    default-schema: public
+
+server:
+  port: 8082

@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: snowboard_rental_crm
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+      enabled: true
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    whitelabel:
+      enabled: false
+
+swagger:
+  serverBaseUrl: ${SWAGGER_SERVER_BASE_URL:http://localhost:8080}
+
+security:
+  jwt:
+    secretKey: ${SECRET_KEY:9Sdyeei3eVadXxnGTxPXiTzgKVZth9p8Zwz9yCVr5JJLP2avvJ777}
+    amountToAdd: ${AMOUNT_TO_ADD:2}
+
+
+auth:
+  url: ${AUTH_BASE_URL:http://localhost:8082/v1/auth}
+
+core:
+  url: ${AUTH_BASE_URL:http://localhost:8079/v1}
+
+media:
+  url: ${MEDIA_BASE_URL:http://localhost:8077/v1/media}
+
+main:
+  allow-bean-definition-overriding: true
+  allow-circular-references: true

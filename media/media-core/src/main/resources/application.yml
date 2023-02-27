@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: media-service
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  port: 8077
+
+aws:
+  s3:
+    secret: ${AWS_ACCESS_SECRET}
+    key: ${AWS_ACCESS_KEY}
+    region: ${AWS_REGION}
+    bucket: test
+    serviceEndpoint: ${AWS_SERVICE_ENDPOINT}

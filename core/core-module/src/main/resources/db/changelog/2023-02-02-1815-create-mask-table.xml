@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author="Lesnikov" id="2023-02-02-1815-create-mask-table">
+        <createTable tableName="mask">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="mask_pkey"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="photo_url" type="varchar(255)"/>
+            <column name="lens_tint" type="varchar(255)"/>
+            <column name="is_anti_fog" type="boolean" defaultValue="false"/>
+            <column name="collateral_value" type="numeric"/>
+
+            <column name="is_rental" type="boolean" defaultValue="false"/>
+            <column name="created_by" type="bigint"/>
+            <column name="created_at" type="timestamp without time zone"/>
+            <column name="created_user_type" type="varchar(100)"/>
+            <column name="updated_by" type="bigint"/>
+            <column name="updated_at" type="timestamp without time zone"/>
+            <column name="updated_user_type" type="varchar(100)"/>
+            <column name="is_deleted" type="boolean" defaultValue="false"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

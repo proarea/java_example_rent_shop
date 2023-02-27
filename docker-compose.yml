@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  rental_postgres:
+    build:
+      context: .
+      dockerfile: core/db.Dockerfile
+      args:
+        - RENTAL_DATABASE_NAME=rental
+        - RENTAL_DB_USERNAME=rental_user
+        - RENTAL_DB_PASSWORD=12345678
+        - RENTAL_DB_MAX_CONNECTIONS=1000
+    container_name: rental_postgres
+    image: rental_postgres
+    ports:
+      - "5435:5432"
+    networks:
+      - rental_crm_network
+
+networks:
+  rental_crm_network:
